@@ -1,0 +1,511 @@
+gitのトレーニングを独自で行いました。
+ターミナル上での記録です。
+
+
+mech-user@ki00118:~$ ls
+Desktop    Dropbox   Public     catkin_ws  examples.desktop  soft2
+Documents  Music     Templates  emacs.d    image_processing  soft3
+Downloads  Pictures  Videos     ex2        sketchbook
+mech-user@ki00118:~$ cd soft3
+mech-user@ki00118:~/soft3$ ls
+mech-user@ki00118:~/soft3$ mkdir 9-28
+mech-user@ki00118:~/soft3$ cd 9-28
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git init
+Initialized empty Git repository in /home/mech-user/soft3/9-28/.git/
+mech-user@ki00118:~/soft3/9-28$ git remote add origin https://github.com/ham-sh/intro_git.git
+mech-user@ki00118:~/soft3/9-28$ cd ..
+mech-user@ki00118:~/soft3$ git clone https://github.com/ham-sh/intro_git.git
+Cloning into 'intro_git'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+mech-user@ki00118:~/soft3$ ls
+9-28  intro_git
+mech-user@ki00118:~/soft3$ cd 9-28
+mech-user@ki00118:~/soft3/9-28$ git add git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git commit -m "git_test.txtの追加"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'mech-user@ki00118.(none)')
+mech-user@ki00118:~/soft3/9-28$ git config --global user.email "hamano-shogo@g.ecc.u-tokyo.ac.jp"
+mech-user@ki00118:~/soft3/9-28$ git config --global user.name "ham-sh"
+mech-user@ki00118:~/soft3/9-28$ git commit -m "git_test.txtの追加"
+[master (root-commit) 6094709] git_test.txtの追加
+ 1 file changed, 1 insertion(+)
+ create mode 100644 git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git push origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+To https://github.com/ham-sh/intro_git.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/ham-sh/intro_git.git'
+ヒント: Updates were rejected because the remote contains work that you do
+ヒント: not have locally. This is usually caused by another repository pushing
+ヒント: to the same ref. You may want to first integrate the remote changes
+ヒント: (e.g., 'git pull ...') before pushing again.
+ヒント: See the 'Note about fast-forwards' in 'git push --help' for details.
+mech-user@ki00118:~/soft3/9-28$ git push -u origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+To https://github.com/ham-sh/intro_git.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/ham-sh/intro_git.git'
+ヒント: Updates were rejected because the remote contains work that you do
+ヒント: not have locally. This is usually caused by another repository pushing
+ヒント: to the same ref. You may want to first integrate the remote changes
+ヒント: (e.g., 'git pull ...') before pushing again.
+ヒント: See the 'Note about fast-forwards' in 'git push --help' for details.
+mech-user@ki00118:~/soft3/9-28$ git pull origin master
+warning: no common commits
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+From https://github.com/ham-sh/intro_git
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+fatal: refusing to merge unrelated histories
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git push -u origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+To https://github.com/ham-sh/intro_git.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/ham-sh/intro_git.git'
+ヒント: Updates were rejected because the tip of your current branch is behind
+ヒント: its remote counterpart. Integrate the remote changes (e.g.
+ヒント: 'git pull ...') before pushing again.
+ヒント: See the 'Note about fast-forwards' in 'git push --help' for details.
+mech-user@ki00118:~/soft3/9-28$ git push -f origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 252 bytes | 252.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ham-sh/intro_git.git
+ + 919c64b...6094709 master -> master (forced update)
+mech-user@ki00118:~/soft3/9-28$ vi first.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   git_test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+mech-user@ki00118:~/soft3/9-28$ git diff
+diff --git a/git_test.txt b/git_test.txt
+index f6edd6e..9c0167f 100644
+--- a/git_test.txt
++++ b/git_test.txt
+@@ -1 +1,3 @@
+ git test
++
++second commit
+mech-user@ki00118:~/soft3/9-28$ git add .
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+コミット予定の変更点:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   git_test.txt
+
+mech-user@ki00118:~/soft3/9-28$ git commit -m "git_test.txt"
+[master 929c5d9] git_test.txt
+ 1 file changed, 2 insertions(+)
+mech-user@ki00118:~/soft3/9-28$ git log
+commit 929c5d91f3705f0b6a9880c3c6fc63b33415cdc0 (HEAD -> master)
+Author: ham-sh <hamano-shogo@g.ecc.u-tokyo.ac.jp>
+Date:   Tue Sep 29 22:44:03 2020 +0900
+
+    git_test.txt
+
+commit 6094709b1d1f716ab3b4bcbf98cae1b17f7c029c (origin/master)
+Author: ham-sh <hamano-shogo@g.ecc.u-tokyo.ac.jp>
+Date:   Tue Sep 29 22:26:40 2020 +0900
+
+    git_test.txtの追加
+mech-user@ki00118:~/soft3/9-28$ git push origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ham-sh/intro_git.git
+   6094709..929c5d9  master -> master
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git checkout -- git_test.txt
+mech-user@ki00118:~/soft3/9-28$ cat git_test.txt
+git test
+
+second commit
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt
+mech-user@ki00118:~/soft3/9-28$ cat git_test.txt
+git test
+
+second commit
+
+git reset
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   git_test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+mech-user@ki00118:~/soft3/9-28$ git add git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+コミット予定の変更点:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   git_test.txt
+
+mech-user@ki00118:~/soft3/9-28$ git reset HEAD git_test.txt
+Unstaged changes after reset:
+M	git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   git_test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+mech-user@ki00118:~/soft3/9-28$ git checkout -- git_test.txt
+mech-user@ki00118:~/soft3/9-28$ cat git_test.txt 
+git test
+
+second commit
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+nothing to commit, working tree clean
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git add git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git commit -m "git commitwo"
+[master 6875a1f] git commitwo
+ 1 file changed, 2 insertions(+)
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git add git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git commit --amend
+[master 810dce0] git commitを追記
+ Date: Tue Sep 29 22:54:35 2020 +0900
+ 1 file changed, 2 insertions(+)
+mech-user@ki00118:~/soft3/9-28$ git log -p -n 1
+commit 810dce07a298b3950c0b51d7989f295f157502a5 (HEAD -> master)
+Author: ham-sh <hamano-shogo@g.ecc.u-tokyo.ac.jp>
+Date:   Tue Sep 29 22:54:35 2020 +0900
+
+    git commitを追記
+
+diff --git a/git_test.txt b/git_test.txt
+index 9c0167f..f0b24be 100644
+--- a/git_test.txt
++++ b/git_test.txt
+@@ -1,3 +1,5 @@
+ git test
+ 
+ second commit
++
++git commit amend
+mech-user@ki00118:~/soft3/9-28$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+mech-user@ki00118:~/soft3/9-28$ git push origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 310 bytes | 310.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ham-sh/intro_git.git
+   929c5d9..810dce0  master -> master
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+nothing to commit, working tree clean
+mech-user@ki00118:~/soft3/9-28$ git fetch origin
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/ham-sh/intro_git
+   810dce0..8076671  master     -> origin/master
+mech-user@ki00118:~/soft3/9-28$ git branch -a
+* master
+  remotes/origin/master
+mech-user@ki00118:~/soft3/9-28$ git checkout remotes/origin/master
+Note: checking out 'remotes/origin/master'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 8076671 Create test_2.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt
+mech-user@ki00118:~/soft3/9-28$ cat test_2.txt
+hello
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Previous HEAD position was 8076671 Create test_2.txt
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git merge origin/master
+Updating 810dce0..8076671
+Fast-forward
+ test_2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test_2.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt
+mech-user@ki00118:~/soft3/9-28$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/ham-sh/intro_git
+ * branch            master     -> FETCH_HEAD
+   8076671..40c4cd2  master     -> origin/master
+Updating 8076671..40c4cd2
+Fast-forward
+ test_2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt
+mech-user@ki00118:~/soft3/9-28$ cat test_2.txt
+hello
+git pull
+mech-user@ki00118:~/soft3/9-28$ git branch feature
+mech-user@ki00118:~/soft3/9-28$ git branch -a
+  feature
+* master
+  remotes/origin/master
+mech-user@ki00118:~/soft3/9-28$ git checkout feature
+Switched to branch 'feature'
+mech-user@ki00118:~/soft3/9-28$ git branch -a
+* feature
+  master
+  remotes/origin/master
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt
+mech-user@ki00118:~/soft3/9-28$ git log --oneline --decorate
+40c4cd2 (HEAD -> feature, origin/master, master) Update test_2.txt
+8076671 Create test_2.txt
+810dce0 git commitを追記
+929c5d9 git_test.txt
+6094709 git_test.txtの追加
+mech-user@ki00118:~/soft3/9-28$ touch test_3.txt
+mech-user@ki00118:~/soft3/9-28$ vi test_3.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_3.txt
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ feature
+追跡されていないファイル:
+  (use "git add <file>..." to include in what will be committed)
+
+	test_3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+mech-user@ki00118:~/soft3/9-28$ git add test_3.txt
+mech-user@ki00118:~/soft3/9-28$ git commit -m "test_3を追加"
+[feature b67c6f9] test_3を追加
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test_3.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_3.txt
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt
+mech-user@ki00118:~/soft3/9-28$ vi test_4.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_4.txt
+mech-user@ki00118:~/soft3/9-28$ gid add test_4.txt
+
+Command 'gid' not found, but can be installed with:
+
+sudo apt install id-utils
+
+mech-user@ki00118:~/soft3/9-28$ git add test_4.txt
+mech-user@ki00118:~/soft3/9-28$ git commit -m "test_4.txtを追加"
+[master f2eb7c6] test_4.txtを追加
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test_4.txt
+mech-user@ki00118:~/soft3/9-28$ git push origin master
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 343 bytes | 343.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/ham-sh/intro_git.git
+   40c4cd2..f2eb7c6  master -> master
+mech-user@ki00118:~/soft3/9-28$ git checkout feature
+Switched to branch 'feature'
+mech-user@ki00118:~/soft3/9-28$ git push origin feature
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 338 bytes | 338.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'feature' on GitHub by visiting:
+remote:      https://github.com/ham-sh/intro_git/pull/new/feature
+remote: 
+To https://github.com/ham-sh/intro_git.git
+ * [new branch]      feature -> feature
+mech-user@ki00118:~/soft3/9-28$ git branch -a
+* feature
+  master
+  remotes/origin/feature
+  remotes/origin/master
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ git pull origin master
+From https://github.com/ham-sh/intro_git
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+mech-user@ki00118:~/soft3/9-28$ git checkout feature
+Switched to branch 'feature'
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ git pull origin feature
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/ham-sh/intro_git
+ * branch            feature    -> FETCH_HEAD
+   b67c6f9..be537d6  feature    -> origin/feature
+Merge made by the 'recursive' strategy.
+ test_2.txt | 1 +
+ test_3.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 test_3.txt
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_3.txt  test_4.txt
+mech-user@ki00118:~/soft3/9-28$ cat test_2.txt
+hello
+git pull
+git merge
+mech-user@ki00118:~/soft3/9-28$ git log --oneline -n a
+mech-user@ki00118:~/soft3/9-28$ git log --oneline -n 1
+e95edce (HEAD -> master) Merge branch 'feature' of https://github.com/ham-sh/intro_git
+mech-user@ki00118:~/soft3/9-28$ git checkout feature
+Switched to branch 'feature'
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_3.txt
+mech-user@ki00118:~/soft3/9-28$ vi test_3.txt
+mech-user@ki00118:~/soft3/9-28$ vi add test_3.txt
+2 個のファイルが編集を控えています
+mech-user@ki00118:~/soft3/9-28$ vi test_3.txt
+mech-user@ki00118:~/soft3/9-28$ git add test_3.txt
+mech-user@ki00118:~/soft3/9-28$ git commit -m "add feature"
+[feature 1eb72a5] add feature
+ 1 file changed, 1 insertion(+)
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ git merge feature
+Merge made by the 'recursive' strategy.
+ test_3.txt | 1 +
+ 1 file changed, 1 insertion(+)
+mech-user@ki00118:~/soft3/9-28$ cat test_3.txt
+good night
+feature
+mech-user@ki00118:~/soft3/9-28$ git log --oneline -n 1
+cc68eda (HEAD -> master) Merge branch 'feature'
+mech-user@ki00118:~/soft3/9-28$ git branch
+  feature
+* master
+mech-user@ki00118:~/soft3/9-28$ git pull origin master
+From https://github.com/ham-sh/intro_git
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+mech-user@ki00118:~/soft3/9-28$ git status
+ブランチ master
+nothing to commit, working tree clean
+mech-user@ki00118:~/soft3/9-28$ git checkout -b pull_request
+Switched to a new branch 'pull_request'
+mech-user@ki00118:~/soft3/9-28$ ls
+git_test.txt  test_2.txt  test_3.txt  test_4.txt
+mech-user@ki00118:~/soft3/9-28$ vi git_test.txt
+mech-user@ki00118:~/soft3/9-28$ git add git_test.txt 
+mech-user@ki00118:~/soft3/9-28$ git commit -m "add pull request"
+[pull_request e59e872] add pull request
+ 1 file changed, 2 insertions(+)
+mech-user@ki00118:~/soft3/9-28$ git push origin pull_request
+Username for 'https://github.com': ham-sh
+Password for 'https://ham-sh@github.com': 
+Counting objects: 10, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (10/10), 1.11 KiB | 379.00 KiB/s, done.
+Total 10 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'pull_request' on GitHub by visiting:
+remote:      https://github.com/ham-sh/intro_git/pull/new/pull_request
+remote: 
+To https://github.com/ham-sh/intro_git.git
+ * [new branch]      pull_request -> pull_request
+mech-user@ki00118:~/soft3/9-28$ git checkout master
+Switched to branch 'master'
+mech-user@ki00118:~/soft3/9-28$ git pull origin master
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), done.
+From https://github.com/ham-sh/intro_git
+ * branch            master     -> FETCH_HEAD
+   f2eb7c6..7e0e72e  master     -> origin/master
+Updating cc68eda..7e0e72e
+Fast-forward
+ git_test.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+mech-user@ki00118:~/soft3/9-28$ git barnch -d pull_request
+git: 'barnch' はgitコマンドではありません。 'git --help'を参照してください。
+
+The most similar command is
+	branch
+mech-user@ki00118:~/soft3/9-28$ git branch -d pull_request
+Deleted branch pull_request (was e59e872).
+mech-user@ki00118:~/soft3/9-28$ git branch
+  feature
+* master
+
